@@ -62,10 +62,23 @@ function unoCol(rank: number): number {
 // ── Shared sizes ─────────────────────────────────────────────────────────────
 
 // Aspect ratio from source images: 1324×2188 ≈ 0.605
-const SIZES = {
+// Base sizes (used on screens >= 400px)
+const SIZES_BASE = {
   sm: { w: 52,  h: 86  },   // opponent backs, capture-select list
   md: { w: 72,  h: 119 },   // table cards
   lg: { w: 90,  h: 149 },   // player hand
+}
+
+// Compact sizes for narrow screens (< 400px)
+const SIZES_COMPACT = {
+  sm: { w: 40,  h: 66  },
+  md: { w: 56,  h: 93  },
+  lg: { w: 72,  h: 119 },
+}
+
+function useSizes() {
+  const isNarrow = typeof window !== 'undefined' && window.innerWidth < 400
+  return isNarrow ? SIZES_COMPACT : SIZES_BASE
 }
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -99,6 +112,7 @@ function NapoletaneCard({
   card, faceDown = false, selected = false, highlighted = false, capturable = false,
   rotated = false, onClick, onPointerEnter, onPointerLeave, size = 'md', disabled = false,
 }: CardViewProps) {
+  const SIZES = useSizes()
   const { w, h } = SIZES[size]
   const src = faceDown || !card ? '/assets/napoletane/back.jpg' : napoletaneSrc(card)
 
@@ -171,6 +185,7 @@ function FrenchCard({
   card, faceDown = false, selected = false, highlighted = false, capturable = false,
   rotated = false, onClick, onPointerEnter, onPointerLeave, size = 'md', disabled = false,
 }: CardViewProps) {
+  const SIZES = useSizes()
   const { w, h } = SIZES[size]
 
   const outlineColor = selected ? '#facc15' : highlighted ? '#4ade80' : capturable ? '#60a5fa' : undefined
@@ -241,6 +256,7 @@ function UnoCard({
   card, faceDown = false, selected = false, highlighted = false, capturable = false,
   rotated = false, onClick, onPointerEnter, onPointerLeave, size = 'md', disabled = false,
 }: CardViewProps) {
+  const SIZES = useSizes()
   const { w, h } = SIZES[size]
 
   const outlineColor = selected ? '#facc15' : highlighted ? '#4ade80' : capturable ? '#60a5fa' : undefined
