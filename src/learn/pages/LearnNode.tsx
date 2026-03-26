@@ -23,7 +23,7 @@ function GuideTextView({ text, onContinue }: { text: string; onContinue: () => v
           // Render **bold** inline
           const parts = para.split(/(\*\*[^*]+\*\*)/)
           return (
-            <p key={i} className="text-sm text-green-100 leading-relaxed">
+            <p key={i} className="text-sm text-fcc-primary-fg leading-relaxed">
               {parts.map((part, j) =>
                 part.startsWith('**') && part.endsWith('**')
                   ? <strong key={j} className="text-white font-semibold">{part.slice(2, -2)}</strong>
@@ -35,7 +35,7 @@ function GuideTextView({ text, onContinue }: { text: string; onContinue: () => v
       </div>
       <button
         onClick={onContinue}
-        className="w-full py-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 mt-2"
+        className="w-full py-3 bg-fcc-yellow-gold text-fcc-primary-bg font-bold rounded-lg hover:bg-fcc-yellow mt-2"
       >
         Got it →
       </button>
@@ -64,8 +64,8 @@ export default function LearnNode() {
   if (!node || !nodeId) {
     return (
       <div className="flex flex-col min-h-dvh items-center justify-center p-4">
-        <p className="text-red-400">Node not found.</p>
-        <button onClick={() => navigate('/learn')} className="mt-4 text-green-400 hover:text-white underline text-sm">
+        <p className="text-fcc-red">Node not found.</p>
+        <button onClick={() => navigate('/learn')} className="mt-4 text-fcc-green hover:text-white underline text-sm">
           ← Back to Learn
         </button>
       </div>
@@ -76,8 +76,8 @@ export default function LearnNode() {
   if (nodeState === 'locked') {
     return (
       <div className="flex flex-col min-h-dvh items-center justify-center p-4">
-        <p className="text-gray-400">This node is locked. Complete its prerequisites first.</p>
-        <button onClick={() => navigate('/learn')} className="mt-4 text-green-400 hover:text-white underline text-sm">
+        <p className="text-fcc-quaternary-fg">This node is locked. Complete its prerequisites first.</p>
+        <button onClick={() => navigate('/learn')} className="mt-4 text-fcc-green hover:text-white underline text-sm">
           ← Back to Learn
         </button>
       </div>
@@ -154,11 +154,11 @@ export default function LearnNode() {
     <div className="flex flex-col min-h-dvh max-w-lg mx-auto p-4 gap-4 pb-8">
       {/* Header */}
       <div className="flex items-center gap-2">
-        <button onClick={() => navigate('/learn')} className="text-green-500 hover:text-white text-sm">
+        <button onClick={() => navigate('/learn')} className="text-fcc-green hover:text-white text-sm">
           ←
         </button>
         <div className="flex-1">
-          <span className="text-xs font-mono text-green-500">{node.id}</span>
+          <span className="text-xs font-mono text-fcc-green">{node.id}</span>
           <h1 className="text-lg font-bold">{node.name.en}</h1>
         </div>
         <button
@@ -167,7 +167,7 @@ export default function LearnNode() {
             const idx = styles.indexOf(deckStyle as 'napoletane' | 'french' | 'uno')
             setDeckStyle(styles[(idx + 1) % styles.length]!)
           }}
-          className="text-xs text-green-600 hover:text-green-400 underline shrink-0"
+          className="text-xs text-fcc-muted hover:text-fcc-green underline shrink-0"
           title="Switch deck style"
         >
           {deckStyle === 'napoletane' ? 'Na' : deckStyle === 'french' ? 'Fr' : 'Col'}
@@ -185,9 +185,9 @@ export default function LearnNode() {
               <span
                 key={step}
                 className={`px-2 py-0.5 rounded font-semibold ${
-                  isCurrent ? 'bg-yellow-500 text-black' :
-                  isDone ? 'bg-green-800 text-green-300' :
-                  'bg-gray-800 text-gray-500'
+                  isCurrent ? 'bg-fcc-yellow-gold text-fcc-primary-bg' :
+                  isDone ? 'bg-fcc-tertiary-bg text-fcc-quaternary-fg' :
+                  'bg-fcc-tertiary-bg text-fcc-muted'
                 }`}
               >
                 {stepLabels[step] ?? step}
@@ -208,7 +208,7 @@ export default function LearnNode() {
 
       {part === 'practice' && practiceProblems[practiceIndex] && (
         <div className="flex flex-col gap-2">
-          <div className="text-xs text-green-500 text-right">
+          <div className="text-xs text-fcc-green text-right">
             Question {practiceIndex + 1} / {practiceProblems.length}
           </div>
           <PracticeQuestion
@@ -221,7 +221,7 @@ export default function LearnNode() {
 
       {part === 'challenges' && challengeProblems[challengeIndex] && (
         <div className="flex flex-col gap-2">
-          <div className="text-xs text-green-500 text-right">
+          <div className="text-xs text-fcc-green text-right">
             Challenge {challengeIndex + 1} / {challengeProblems.length}
           </div>
           <ChallengePlayer
@@ -235,13 +235,13 @@ export default function LearnNode() {
       {part === 'complete' && (
         <div className="flex flex-col items-center gap-6 py-8">
           <div className="text-4xl">🎉</div>
-          <div className="text-xl font-bold text-green-400">{node.name.en} complete!</div>
-          <p className="text-sm text-green-300 text-center">
+          <div className="text-xl font-bold text-fcc-green">{node.name.en} complete!</div>
+          <p className="text-sm text-fcc-quaternary-fg text-center">
             New nodes may now be unlocked on the Learn map.
           </p>
           <button
             onClick={() => navigate('/learn')}
-            className="px-8 py-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400"
+            className="px-8 py-3 bg-fcc-yellow-gold text-fcc-primary-bg font-bold rounded-lg hover:bg-fcc-yellow"
           >
             Back to Learn map
           </button>

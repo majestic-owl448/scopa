@@ -12,7 +12,7 @@ import { useCardLabel } from '../utils/cardLabel.ts'
 import { useTranslation } from 'react-i18next'
 
 const SUIT_COLOR: Record<string, string> = {
-  coins: 'text-yellow-400', cups: 'text-red-400', swords: 'text-gray-300', clubs: 'text-green-400',
+  coins: 'text-fcc-yellow', cups: 'text-fcc-red', swords: 'text-fcc-quaternary-fg', clubs: 'text-fcc-green',
 }
 
 function CardLabel({ card }: { card: Card }) {
@@ -54,13 +54,13 @@ function CapturedPile({ capturedCards, scopeMarkerCards }: { capturedCards: Card
       {count > 0 && (
         <div className="relative flex-shrink-0" style={{ width: 30, height: 50 }}>
           {count >= 3 && (
-            <div className="absolute rounded" style={{ width: 26, height: 44, top: 4, left: 2, background: '#14532d', border: '1px solid #166534' }} />
+            <div className="absolute rounded" style={{ width: 26, height: 44, top: 4, left: 2, background: '#1b1b32', border: '1px solid #166534' }} />
           )}
           {count >= 2 && (
-            <div className="absolute rounded" style={{ width: 26, height: 44, top: 2, left: 1, background: '#1c3d5a', border: '1px solid #1e4a7d' }} />
+            <div className="absolute rounded" style={{ width: 26, height: 44, top: 2, left: 1, background: '#2a2a40', border: '1px solid #1e4a7d' }} />
           )}
-          <div className="absolute rounded flex items-center justify-center" style={{ width: 26, height: 44, top: 0, left: 0, background: '#1e3a6b', border: '1px solid #3b82f6' }}>
-            <span className="text-blue-300 font-bold" style={{ fontSize: 10 }}>{count}</span>
+          <div className="absolute rounded flex items-center justify-center" style={{ width: 26, height: 44, top: 0, left: 0, background: '#3b3b4f', border: '1px solid #3b82f6' }}>
+            <span className="text-fcc-blue font-bold" style={{ fontSize: 10 }}>{count}</span>
           </div>
         </div>
       )}
@@ -201,21 +201,21 @@ export default function Game() {
   return (
     <div className="flex flex-col min-h-dvh max-w-lg mx-auto p-1 sm:p-2 gap-1.5 sm:gap-2 pb-4">
       {/* Header: scores */}
-      <div className="flex gap-1 bg-green-900/80 rounded-lg p-2">
+      <div className="flex gap-1 bg-fcc-secondary-bg/80 rounded-lg p-2">
         {players.map((p, i) => (
-          <div key={p.id} className={`flex-1 flex flex-col items-center rounded p-1 ${i === currentPlayerIndex && phase === 'playing' ? 'bg-yellow-500/20 ring-1 ring-yellow-400' : ''}`}>
+          <div key={p.id} className={`flex-1 flex flex-col items-center rounded p-1 ${i === currentPlayerIndex && phase === 'playing' ? 'bg-fcc-yellow/20 ring-1 ring-fcc-yellow' : ''}`}>
             <span className="font-bold text-sm truncate max-w-full">{p.name}</span>
-            <span className="text-lg font-bold text-yellow-400">{totalScores[i] ?? 0}</span>
-            <span className="text-xs text-green-400">/ {target}</span>
+            <span className="text-lg font-bold text-fcc-yellow">{totalScores[i] ?? 0}</span>
+            <span className="text-xs text-fcc-green">/ {target}</span>
           </div>
         ))}
-        <div className="flex flex-col items-center justify-center px-2 text-green-500 gap-0.5">
+        <div className="flex flex-col items-center justify-center px-2 text-fcc-green gap-0.5">
           <span className="text-xs">{t('deck')}</span>
           <span className="font-mono font-bold">{deck.length}</span>
           <span className="text-xs">{t('hand_n', { n: handNumber })}</span>
           <button
             onClick={() => setShowScoreboard(true)}
-            className="text-xs text-green-600 hover:text-green-400 underline min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-xs text-fcc-muted hover:text-fcc-green underline min-h-[44px] min-w-[44px] flex items-center justify-center"
             title={t('scoreboard')}
           >
             {t('scores')}
@@ -227,14 +227,14 @@ export default function Game() {
                 const idx = styles.indexOf(deckStyle as 'napoletane' | 'french' | 'uno')
                 setDeckStyle(styles[(idx + 1) % styles.length]!)
               }}
-              className="text-xs text-green-600 hover:text-green-400 underline min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="text-xs text-fcc-muted hover:text-fcc-green underline min-h-[44px] min-w-[44px] flex items-center justify-center"
               title="Switch deck style"
             >
               {deckStyle === 'napoletane' ? 'Na' : deckStyle === 'french' ? 'Fr' : 'Col'}
             </button>
             <button
               onClick={() => setShowRules(true)}
-              className="text-xs text-blue-400 hover:text-blue-200 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="text-xs text-fcc-blue hover:text-fcc-blue min-h-[44px] min-w-[44px] flex items-center justify-center"
               title={t('rules_reference')}
             >
               ? {t('common:rules')}
@@ -242,7 +242,7 @@ export default function Game() {
           </div>
           <button
             onClick={handleQuit}
-            className="text-xs text-red-700 hover:text-red-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-xs text-fcc-red hover:text-fcc-red min-h-[44px] min-w-[44px] flex items-center justify-center"
             title={t('quit')}
           >
             ✕ {t('quit')}
@@ -252,9 +252,9 @@ export default function Game() {
 
       {/* Opponents: hand + captured pile */}
       {players.slice(1).map((p) => (
-        <div key={p.id} className="flex items-center justify-between gap-2 px-1 bg-green-900/30 rounded-lg py-1.5">
+        <div key={p.id} className="flex items-center justify-between gap-2 px-1 bg-fcc-secondary-bg/30 rounded-lg py-1.5">
           <div className="flex flex-col items-center gap-1">
-            <div className="text-xs text-green-500">{t('n_in_hand', { n: p.hand.length })}</div>
+            <div className="text-xs text-fcc-green">{t('n_in_hand', { n: p.hand.length })}</div>
             <div className="flex gap-1">
               {p.hand.map((_, idx) => (
                 <CardView key={idx} card={null} faceDown size="sm" />
@@ -267,28 +267,28 @@ export default function Game() {
 
       {/* Last AI play record */}
       {isHumanTurn && lastAIPlay && (
-        <div className="flex items-center gap-2 bg-green-950/60 border border-green-800 rounded-lg px-3 py-2 text-sm">
-          <span className="text-green-500 text-xs shrink-0">{t('played', { name: lastAIPlay.playerName })}</span>
+        <div className="flex items-center gap-2 bg-fcc-primary-bg/60 border border-fcc-quaternary-bg rounded-lg px-3 py-2 text-sm">
+          <span className="text-fcc-green text-xs shrink-0">{t('played', { name: lastAIPlay.playerName })}</span>
           <CardView card={lastAIPlay.card} size="sm" />
           {lastAIPlay.captures.length > 0 ? (
             <>
-              <span className="text-green-600 text-xs shrink-0">{t('took')}</span>
+              <span className="text-fcc-muted text-xs shrink-0">{t('took')}</span>
               <div className="flex gap-1 flex-wrap">
                 {lastAIPlay.captures.map(c => <CardView key={c.id} card={c} size="sm" />)}
               </div>
             </>
           ) : (
-            <span className="text-green-700 text-xs italic">{t('discarded')}</span>
+            <span className="text-fcc-muted text-xs italic">{t('discarded')}</span>
           )}
         </div>
       )}
 
       {/* Table */}
       <div className="flex-1 flex flex-col items-center justify-center gap-1 min-h-32">
-        <div className="text-xs text-green-500 uppercase tracking-wide">{t('table')}</div>
+        <div className="text-xs text-fcc-green uppercase tracking-wide">{t('table')}</div>
         <div className="flex gap-2 flex-wrap justify-center items-center" style={{minHeight: 119}}>
           {table.length === 0 ? (
-            <span className="text-green-700 text-sm italic">{t('empty_table')}</span>
+            <span className="text-fcc-muted text-sm italic">{t('empty_table')}</span>
           ) : (
             table.map(card => (
               <CardView
@@ -308,8 +308,8 @@ export default function Game() {
 
       {/* Capture-select */}
       {isCaptureSelect && (
-        <div className="bg-green-900 rounded-lg p-3 border border-yellow-600">
-          <div className="text-sm text-yellow-400 mb-2 font-semibold">{t('choose_capture')}</div>
+        <div className="bg-fcc-secondary-bg rounded-lg p-3 border border-fcc-yellow">
+          <div className="text-sm text-fcc-yellow mb-2 font-semibold">{t('choose_capture')}</div>
           <div className="flex flex-col gap-1.5">
             {pendingCaptures.map((combo, idx) => {
               if (captureFilter && !captureFilter.includes(idx)) return null
@@ -317,10 +317,10 @@ export default function Game() {
                 <button
                   key={idx}
                   onClick={() => handleCaptureSelect(idx)}
-                  className="flex gap-1.5 items-center bg-green-800 hover:bg-green-700 rounded p-2 border border-green-600"
+                  className="flex gap-1.5 items-center bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg rounded p-2 border border-fcc-quaternary-bg"
                 >
                   {combo.map(c => <CardView key={c.id} card={c} size="sm" />)}
-                  <span className="ml-2 text-xs text-green-400">
+                  <span className="ml-2 text-xs text-fcc-green">
                     {combo.map(c => <CardLabel key={c.id} card={c} />)}
                   </span>
                 </button>
@@ -332,14 +332,14 @@ export default function Game() {
 
       {/* Status bar when waiting for AI */}
       {!isHumanTurn && phase === 'playing' && (
-        <div className="text-center text-green-400 text-sm py-1 animate-pulse">
+        <div className="text-center text-fcc-green text-sm py-1 animate-pulse">
           {t('thinking', { name: players[currentPlayerIndex]?.name })}
         </div>
       )}
 
       {/* Human hand */}
       <div className="flex flex-col items-center gap-2">
-        <div className="text-xs text-green-500 uppercase tracking-wide">{t('your_hand')}</div>
+        <div className="text-xs text-fcc-green uppercase tracking-wide">{t('your_hand')}</div>
         <div className="flex gap-1.5 justify-center flex-wrap">
           {humanPlayer.hand.map(card => (
             <CardView
@@ -357,13 +357,13 @@ export default function Game() {
           <div className="flex items-center gap-3">
             <button
               onClick={handlePlay}
-              className="px-6 py-2 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
+              className="px-6 py-2 bg-fcc-yellow-gold text-fcc-primary-bg font-bold rounded-lg hover:bg-fcc-yellow transition-colors"
             >
               {validCaptures.length > 0 ? `⚡ ${t('common:capture')}` : `→ ${t('common:discard')}`}
             </button>
             <button
               onClick={() => setSelectedCardId(null)}
-              className="px-3 py-2 text-green-400 hover:text-white text-sm"
+              className="px-3 py-2 text-fcc-green hover:text-white text-sm"
             >
               {t('common:cancel')}
             </button>
@@ -371,22 +371,22 @@ export default function Game() {
         )}
 
         {isHumanTurn && !selectedCardId && (
-          <div className="text-xs text-green-600 italic">{t('select_card_to_play')}</div>
+          <div className="text-xs text-fcc-muted italic">{t('select_card_to_play')}</div>
         )}
       </div>
 
       {/* Captured pile viewer */}
       {humanPlayer.captured.length > 0 && (
-        <div className="border border-green-800 rounded-lg overflow-hidden">
+        <div className="border border-fcc-quaternary-bg rounded-lg overflow-hidden">
           <button
             onClick={() => setShowCaptured(c => !c)}
-            className="w-full flex justify-between items-center px-3 py-2 text-xs text-green-500 hover:bg-green-900/40"
+            className="w-full flex justify-between items-center px-3 py-2 text-xs text-fcc-green hover:bg-fcc-secondary-bg/40"
           >
             <CapturedPile capturedCards={humanPlayer.captured} scopeMarkerCards={humanPlayer.scopeMarkerCards} />
             <span>{showCaptured ? '▲' : '▼'}</span>
           </button>
           {showCaptured && (
-            <div className="px-3 pb-3 bg-green-950/40">
+            <div className="px-3 pb-3 bg-fcc-primary-bg/40">
               {(['coins', 'cups', 'swords', 'clubs'] as const).map(suit => {
                 const cards = humanPlayer.captured.filter(c => c.suit === suit).sort((a, b) => a.rank - b.rank)
                 if (cards.length === 0) return null
@@ -429,31 +429,31 @@ export default function Game() {
 
       {/* In-game rules overlay */}
       {showRules && (
-        <div className="fixed inset-0 bg-black/70 flex items-end justify-center z-40 p-2 sm:p-4" onClick={() => setShowRules(false)}>
+        <div className="fixed inset-0 bg-fcc-primary-bg/70 flex items-end justify-center z-40 p-2 sm:p-4" onClick={() => setShowRules(false)}>
           <div
-            className="bg-gray-900 rounded-xl border border-blue-700 w-full max-w-lg max-h-[80vh] sm:max-h-[75vh] overflow-y-auto"
+            className="bg-fcc-secondary-bg rounded-xl border border-fcc-quaternary-bg w-full max-w-lg max-h-[80vh] sm:max-h-[75vh] overflow-y-auto"
             onClick={e => e.stopPropagation()}
           >
-            <div className="px-4 py-3 border-b border-blue-800 flex justify-between items-center sticky top-0 bg-gray-900">
-              <h2 className="font-bold text-lg text-blue-200">{t('rules_reference')}</h2>
-              <button onClick={() => setShowRules(false)} className="text-gray-400 hover:text-white text-xl">✕</button>
+            <div className="px-4 py-3 border-b border-fcc-quaternary-bg flex justify-between items-center sticky top-0 bg-fcc-secondary-bg">
+              <h2 className="font-bold text-lg text-fcc-blue">{t('rules_reference')}</h2>
+              <button onClick={() => setShowRules(false)} className="text-fcc-quaternary-fg hover:text-white text-xl">✕</button>
             </div>
-            <div className="p-4 text-sm text-green-200 flex flex-col gap-3">
+            <div className="p-4 text-sm text-fcc-secondary-fg flex flex-col gap-3">
               <section>
-                <h3 className="text-blue-300 font-semibold mb-1">{t('common:rules')}</h3>
+                <h3 className="text-fcc-blue font-semibold mb-1">{t('common:rules')}</h3>
                 <p>{t('turn_rules')}</p>
               </section>
               <section>
-                <h3 className="text-blue-300 font-semibold mb-1">{t('capture_rules_title')}</h3>
+                <h3 className="text-fcc-blue font-semibold mb-1">{t('capture_rules_title')}</h3>
                 {config.captureTarget === 'rank' && <p>{t('capture_rules_rank')}</p>}
                 {config.captureTarget === 'quindici' && <p>{t('capture_rules_quindici')}</p>}
                 {config.captureTarget === 'undici' && <p>{t('capture_rules_undici')}</p>}
                 {config.scopaDAssi && <p className="mt-1"><strong>Scopa d'Assi:</strong> {t('scopa_d_assi_rule')}</p>}
-                {config.inversa && <p className="mt-1 text-orange-300"><strong>Inversa:</strong> {t('inversa_rule')}</p>}
+                {config.inversa && <p className="mt-1 text-fcc-yellow"><strong>Inversa:</strong> {t('inversa_rule')}</p>}
               </section>
               <section>
-                <h3 className="text-blue-300 font-semibold mb-1">{t('scoring_rules_title')}</h3>
-                <ul className="list-disc list-inside space-y-0.5 text-green-300">
+                <h3 className="text-fcc-blue font-semibold mb-1">{t('scoring_rules_title')}</h3>
+                <ul className="list-disc list-inside space-y-0.5 text-fcc-quaternary-fg">
                   <li>{t('scoring_scope')}</li>
                   <li>{t('scoring_carte')}</li>
                   <li>{t('scoring_ori')}</li>
@@ -466,7 +466,7 @@ export default function Game() {
                 </ul>
               </section>
               <section>
-                <h3 className="text-blue-300 font-semibold mb-1">{t('target')}</h3>
+                <h3 className="text-fcc-blue font-semibold mb-1">{t('target')}</h3>
                 <p>{t('target_score_info', { target, count: config.playerCount })}</p>
               </section>
             </div>

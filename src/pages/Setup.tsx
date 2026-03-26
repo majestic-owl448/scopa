@@ -93,18 +93,18 @@ export default function Setup() {
   return (
     <div className="max-w-md mx-auto p-4 sm:p-6 flex flex-col gap-4 sm:gap-5 min-h-dvh pb-8">
       <div className="flex items-center gap-4">
-        <button onClick={() => navigate('/')} className="text-green-300 hover:text-white">{t('common:back')}</button>
+        <button onClick={() => navigate('/')} className="text-fcc-quaternary-fg hover:text-white">{t('common:back')}</button>
         <h2 className="text-2xl font-bold">{t('game_setup')}</h2>
       </div>
 
       <section>
-        <h3 className="text-sm uppercase text-green-400 mb-2">{t('players')}</h3>
+        <h3 className="text-sm uppercase text-fcc-green mb-2">{t('players')}</h3>
         <div className="flex gap-2">
           {[2, 3, 4].map(n => (
             <button
               key={n}
               onClick={() => { setPlayerCount(n as 2|3|4); setCardsPerHand(3) }}
-              className={`flex-1 py-2 rounded font-bold ${playerCount === n ? 'bg-yellow-500 text-black' : 'bg-green-800 hover:bg-green-700'}`}
+              className={`flex-1 py-2 rounded font-bold ${playerCount === n ? 'bg-fcc-yellow-gold text-fcc-primary-bg' : 'bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg'}`}
             >
               {n}P
             </button>
@@ -113,13 +113,13 @@ export default function Setup() {
       </section>
 
       <section>
-        <h3 className="text-sm uppercase text-green-400 mb-2">{t('cards_per_hand')}</h3>
+        <h3 className="text-sm uppercase text-fcc-green mb-2">{t('cards_per_hand')}</h3>
         <div className="flex gap-2">
           {handSizeOptions.map(n => (
             <button
               key={n}
               onClick={() => setCardsPerHand(n)}
-              className={`flex-1 py-2 rounded font-bold ${cardsPerHand === n ? 'bg-yellow-500 text-black' : 'bg-green-800 hover:bg-green-700'}`}
+              className={`flex-1 py-2 rounded font-bold ${cardsPerHand === n ? 'bg-fcc-yellow-gold text-fcc-primary-bg' : 'bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg'}`}
             >
               {n}
             </button>
@@ -128,23 +128,23 @@ export default function Setup() {
       </section>
 
       <section>
-        <h3 className="text-sm uppercase text-green-400 mb-2">{t('cpu_difficulty')}</h3>
+        <h3 className="text-sm uppercase text-fcc-green mb-2">{t('cpu_difficulty')}</h3>
         <div className="flex gap-2">
           {(['easy', 'medium', 'hard'] as const).map(d => (
             <button
               key={d}
               onClick={() => setDifficulty(d)}
-              className={`flex-1 py-2 rounded font-bold ${difficulty === d ? 'bg-yellow-500 text-black' : 'bg-green-800 hover:bg-green-700'}`}
+              className={`flex-1 py-2 rounded font-bold ${difficulty === d ? 'bg-fcc-yellow-gold text-fcc-primary-bg' : 'bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg'}`}
             >
               {t(d)}
             </button>
           ))}
         </div>
-        <p className="text-xs text-green-600 mt-1">{difficultyDesc}</p>
+        <p className="text-xs text-fcc-muted mt-1">{difficultyDesc}</p>
       </section>
 
       <section>
-        <h3 className="text-sm uppercase text-green-400 mb-2">{t('capture_rule')}</h3>
+        <h3 className="text-sm uppercase text-fcc-green mb-2">{t('capture_rule')}</h3>
         <div className="flex gap-2">
           {([
             ['rank', t('standard'), t('match_by_rank')],
@@ -154,18 +154,18 @@ export default function Setup() {
             <button
               key={val}
               onClick={() => setCaptureTarget(val)}
-              className={`flex-1 py-2 rounded font-bold text-sm ${captureTarget === val ? 'bg-yellow-500 text-black' : 'bg-green-800 hover:bg-green-700'}`}
+              className={`flex-1 py-2 rounded font-bold text-sm ${captureTarget === val ? 'bg-fcc-yellow-gold text-fcc-primary-bg' : 'bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg'}`}
               title={hint}
             >
               {label}
             </button>
           ))}
         </div>
-        <p className="text-xs text-green-600 mt-1">{captureDesc}</p>
+        <p className="text-xs text-fcc-muted mt-1">{captureDesc}</p>
       </section>
 
       <section>
-        <h3 className="text-sm uppercase text-green-400 mb-2">{t('primiera_values')}</h3>
+        <h3 className="text-sm uppercase text-fcc-green mb-2">{t('primiera_values')}</h3>
         <div className="flex gap-2">
           {([
             ['standard', t('primiera_standard'), t('primiera_standard_hint')],
@@ -175,7 +175,7 @@ export default function Setup() {
             <button
               key={val}
               onClick={() => handlePrimieraChange(val)}
-              className={`flex-1 py-2 rounded font-bold text-sm ${primieraValues === val ? 'bg-yellow-500 text-black' : 'bg-green-800 hover:bg-green-700'}`}
+              className={`flex-1 py-2 rounded font-bold text-sm ${primieraValues === val ? 'bg-fcc-yellow-gold text-fcc-primary-bg' : 'bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg'}`}
               title={hint}
             >
               {label}
@@ -183,12 +183,12 @@ export default function Setup() {
           ))}
         </div>
         {primieraValues === 'milano' && (
-          <p className="text-xs text-orange-500 mt-1">{t('milano_disables_settanta')}</p>
+          <p className="text-xs text-fcc-yellow mt-1">{t('milano_disables_settanta')}</p>
         )}
       </section>
 
       <section>
-        <h3 className="text-sm uppercase text-green-400 mb-2">{t('variants')}</h3>
+        <h3 className="text-sm uppercase text-fcc-green mb-2">{t('variants')}</h3>
         <div className="flex flex-col gap-2">
           {(Object.keys(variants) as VariantKey[]).map(key => {
             const disabled = (key === 'aceScoresScopa' && !variants.scopaDAssi)
@@ -208,9 +208,9 @@ export default function Setup() {
                 <div>
                   <span className="font-semibold text-sm">{VARIANT_INFO[key].label}</span>
                   {key === 'aceScoresScopa' && !variants.scopaDAssi && (
-                    <span className="text-xs text-green-700 ml-2">{t('requires_scopa_d_assi')}</span>
+                    <span className="text-xs text-fcc-muted ml-2">{t('requires_scopa_d_assi')}</span>
                   )}
-                  <p className="text-xs text-green-500">{VARIANT_INFO[key].desc}</p>
+                  <p className="text-xs text-fcc-green">{VARIANT_INFO[key].desc}</p>
                 </div>
               </label>
             )
@@ -219,7 +219,7 @@ export default function Setup() {
       </section>
 
       <section>
-        <h3 className="text-sm uppercase text-green-400 mb-2">{t('card_style')}</h3>
+        <h3 className="text-sm uppercase text-fcc-green mb-2">{t('card_style')}</h3>
         <div className="flex gap-2">
           {([
             ['napoletane', t('naples'), t('naples_hint')],
@@ -229,7 +229,7 @@ export default function Setup() {
             <button
               key={val}
               onClick={() => setDeckStyle(val)}
-              className={`flex-1 py-2 rounded font-bold text-sm ${deckStyle === val ? 'bg-yellow-500 text-black' : 'bg-green-800 hover:bg-green-700'}`}
+              className={`flex-1 py-2 rounded font-bold text-sm ${deckStyle === val ? 'bg-fcc-yellow-gold text-fcc-primary-bg' : 'bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg'}`}
               title={hint}
             >
               {label}
@@ -240,7 +240,7 @@ export default function Setup() {
 
       <button
         onClick={handleStart}
-        className="mt-auto py-4 bg-yellow-500 text-black font-bold text-xl rounded-lg hover:bg-yellow-400 transition-colors"
+        className="mt-auto py-4 bg-fcc-yellow-gold text-fcc-primary-bg font-bold text-xl rounded-lg hover:bg-fcc-yellow transition-colors"
       >
         {t('common:start_game')}
       </button>

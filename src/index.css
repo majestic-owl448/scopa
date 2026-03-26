@@ -2,19 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  font-size: 18px;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #1a5c2a;
-  color: white;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0a0a23;
+  color: #ffffff;
   min-height: 100dvh;
   overscroll-behavior: none;
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  line-height: 1.5;
 }
 
 /* Touch-friendly active states for interactive elements */
@@ -28,4 +35,10 @@ button:active,
 button,
 [role="button"] {
   touch-action: manipulation;
+}
+
+/* Focus outlines — Command-line Chic blue-mid */
+:focus-visible {
+  outline: 2px solid #198eee;
+  outline-offset: 2px;
 }

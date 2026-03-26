@@ -57,10 +57,10 @@ export default function TrainerBoard({
     <div className="flex flex-col gap-3">
       {/* Table */}
       <div className="flex flex-col items-center gap-1">
-        <div className="text-xs text-green-500 uppercase tracking-wide">Table</div>
+        <div className="text-xs text-fcc-green uppercase tracking-wide">Table</div>
         <div className="flex gap-2 flex-wrap justify-center items-center min-h-[119px]">
           {table.length === 0 ? (
-            <span className="text-green-700 text-sm italic">Empty table</span>
+            <span className="text-fcc-muted text-sm italic">Empty table</span>
           ) : (
             table.map(card => (
               <CardView
@@ -92,7 +92,7 @@ export default function TrainerBoard({
 
       {/* Hand */}
       <div className="flex flex-col items-center gap-1">
-        <div className="text-xs text-green-500 uppercase tracking-wide">Your hand</div>
+        <div className="text-xs text-fcc-green uppercase tracking-wide">Your hand</div>
         <div className="flex gap-1.5 justify-center flex-wrap">
           {hand.map(card => (
             <CardView

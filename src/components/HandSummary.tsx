@@ -6,17 +6,17 @@ import { useTranslation } from 'react-i18next'
 
 const SUITS = ['coins', 'cups', 'swords', 'clubs'] as const
 const SUIT_COLOR: Record<string, string> = {
-  coins: 'text-yellow-400', cups: 'text-red-400', swords: 'text-gray-300', clubs: 'text-green-400',
+  coins: 'text-fcc-yellow', cups: 'text-fcc-red', swords: 'text-fcc-quaternary-fg', clubs: 'text-fcc-green',
 }
 
 function Check() {
-  return <span className="text-green-400 font-bold">✓</span>
+  return <span className="text-fcc-green font-bold">✓</span>
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <tr className="border-t border-green-800">
-      <td className="py-1.5 pr-3 text-green-400 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">{label}</td>
+    <tr className="border-t border-fcc-quaternary-bg">
+      <td className="py-1.5 pr-3 text-fcc-green text-xs font-semibold uppercase tracking-wide whitespace-nowrap">{label}</td>
       {children}
     </tr>
   )
@@ -24,7 +24,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 
 function Cell({ children, winner }: { children: React.ReactNode; winner?: boolean }) {
   return (
-    <td className={`py-1.5 px-2 text-sm text-center ${winner ? 'font-bold text-white' : 'text-green-300'}`}>
+    <td className={`py-1.5 px-2 text-sm text-center ${winner ? 'font-bold text-white' : 'text-fcc-quaternary-fg'}`}>
       {children}
     </td>
   )
@@ -47,13 +47,13 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
   const { t } = useTranslation('game')
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-end sm:items-center justify-center z-40 p-2 sm:p-4">
-      <div className="bg-gray-900 rounded-xl border border-green-700 max-w-lg w-full max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
-        <div className="px-4 py-3 border-b border-green-800 flex justify-between items-center">
+    <div className="fixed inset-0 bg-fcc-primary-bg/70 flex items-end sm:items-center justify-center z-40 p-2 sm:p-4">
+      <div className="bg-fcc-secondary-bg rounded-xl border border-fcc-quaternary-bg max-w-lg w-full max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
+        <div className="px-4 py-3 border-b border-fcc-quaternary-bg flex justify-between items-center">
           <h2 className="font-bold text-lg">{t('hand_summary_title', { n: handNumber })}</h2>
           <button
             onClick={onDismiss}
-            className="px-4 py-1.5 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-400 text-sm"
+            className="px-4 py-1.5 bg-fcc-yellow-gold text-fcc-primary-bg font-bold rounded hover:bg-fcc-yellow text-sm"
           >
             {t('common:continue_arrow')}
           </button>
@@ -62,10 +62,10 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
         <div className="p-4">
           <table className="w-full">
             <thead>
-              <tr className="text-green-500 text-xs uppercase">
+              <tr className="text-fcc-green text-xs uppercase">
                 <th className="text-left pb-2"></th>
                 {players.map(p => (
-                  <th key={p.id} className="text-center pb-2 text-green-300 font-semibold">{p.name}</th>
+                  <th key={p.id} className="text-center pb-2 text-fcc-quaternary-fg font-semibold">{p.name}</th>
                 ))}
               </tr>
             </thead>
@@ -83,7 +83,7 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
               <Row label={t('settebello')}>
                 {roundScores.map((rs, i) => (
                   <Cell key={i} winner={rs.settebello}>
-                    {rs.settebello ? <><Check /> <span className="text-yellow-400">{cardLabel(7, 'coins')}</span></> : '—'}
+                    {rs.settebello ? <><Check /> <span className="text-fcc-yellow">{cardLabel(7, 'coins')}</span></> : '—'}
                   </Cell>
                 ))}
               </Row>
@@ -93,7 +93,7 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
                 <Row label={t('re_bello')}>
                   {roundScores.map((rs, i) => (
                     <Cell key={i} winner={rs.reBello}>
-                      {rs.reBello ? <><Check /> <span className="text-yellow-400">{cardLabel(10, 'coins')}</span></> : '—'}
+                      {rs.reBello ? <><Check /> <span className="text-fcc-yellow">{cardLabel(10, 'coins')}</span></> : '—'}
                     </Cell>
                   ))}
                 </Row>
@@ -104,7 +104,7 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
                 <Row label={t('rosmarino')}>
                   {roundScores.map((rs, i) => (
                     <Cell key={i} winner={rs.rosmarino}>
-                      {rs.rosmarino ? <><Check /> <span className="text-gray-300">{cardLabel(8, 'swords')}</span></> : '—'}
+                      {rs.rosmarino ? <><Check /> <span className="text-fcc-quaternary-fg">{cardLabel(8, 'swords')}</span></> : '—'}
                     </Cell>
                   ))}
                 </Row>
@@ -139,7 +139,7 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
 
               {/* Primiera per-suit breakdown */}
               {config.primieraValues !== 'milano' && SUITS.map((suit, si) => (
-                <tr key={suit} className="bg-gray-950/40">
+                <tr key={suit} className="bg-fcc-primary-bg/40">
                   <td className="pl-4 py-0.5 text-xs">
                     <span className={SUIT_COLOR[suit]}>{suitSymbols[suit]}</span>
                   </td>
@@ -149,13 +149,13 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
                     return (
                       <td key={pi} className="py-0.5 px-2 text-center">
                         {card ? (
-                          <span className="text-xs text-green-300">
+                          <span className="text-xs text-fcc-quaternary-fg">
                             {rankLabel(card.rank)}
                             <span className={SUIT_COLOR[card.suit]}>{suitSymbols[card.suit]}</span>
-                            <span className="text-green-600 ml-1">({val})</span>
+                            <span className="text-fcc-muted ml-1">({val})</span>
                           </span>
                         ) : (
-                          <span className="text-green-800 text-xs">—</span>
+                          <span className="text-fcc-muted text-xs">—</span>
                         )}
                       </td>
                     )
@@ -164,10 +164,10 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
               ))}
 
               {config.primieraValues !== 'milano' && (
-                <tr className="bg-gray-950/40">
-                  <td className="pl-4 py-0.5 text-xs text-green-600">{t('total')}</td>
+                <tr className="bg-fcc-primary-bg/40">
+                  <td className="pl-4 py-0.5 text-xs text-fcc-muted">{t('total')}</td>
                   {roundScores.map((rs, i) => (
-                    <td key={i} className="py-0.5 px-2 text-center text-xs text-green-300">
+                    <td key={i} className="py-0.5 px-2 text-center text-xs text-fcc-quaternary-fg">
                       {rs.primieraDetails.total ?? '—'}
                     </td>
                   ))}
@@ -177,10 +177,10 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
               {config.primieraValues === 'milano' && roundScores[0]?.primieraDetails.milanoCounts && (
                 <>
                   {(['sevens', 'sixes', 'aces'] as const).map(key => (
-                    <tr key={key} className="bg-gray-950/40">
-                      <td className="pl-4 py-0.5 text-xs text-green-600">{t(key)}</td>
+                    <tr key={key} className="bg-fcc-primary-bg/40">
+                      <td className="pl-4 py-0.5 text-xs text-fcc-muted">{t(key)}</td>
                       {roundScores.map((rs, i) => (
-                        <td key={i} className="py-0.5 px-2 text-center text-xs text-green-300">
+                        <td key={i} className="py-0.5 px-2 text-center text-xs text-fcc-quaternary-fg">
                           {rs.primieraDetails.milanoCounts?.[key] ?? 0}
                         </td>
                       ))}
@@ -212,8 +212,8 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
               )}
 
               {/* Hand total */}
-              <tr className="border-t-2 border-green-600 bg-green-950/40">
-                <td className="py-2 pr-3 text-xs font-bold uppercase text-green-300">{t('hand')}</td>
+              <tr className="border-t-2 border-fcc-quaternary-bg bg-fcc-primary-bg/40">
+                <td className="py-2 pr-3 text-xs font-bold uppercase text-fcc-quaternary-fg">{t('hand')}</td>
                 {roundScores.map((rs, i) => (
                   <td key={i} className="py-2 px-2 text-center font-bold text-white">
                     +{rs.total}
@@ -222,10 +222,10 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
               </tr>
 
               {/* Running total */}
-              <tr className="border-t border-green-800">
-                <td className="py-2 pr-3 text-xs font-bold uppercase text-green-300">{t('total')}</td>
+              <tr className="border-t border-fcc-quaternary-bg">
+                <td className="py-2 pr-3 text-xs font-bold uppercase text-fcc-quaternary-fg">{t('total')}</td>
                 {players.map((_, i) => (
-                  <td key={i} className="py-2 px-2 text-center font-bold text-yellow-400 text-lg">
+                  <td key={i} className="py-2 px-2 text-center font-bold text-fcc-yellow text-lg">
                     {totalScores[i] ?? 0}
                   </td>
                 ))}

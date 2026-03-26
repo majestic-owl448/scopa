@@ -23,20 +23,20 @@ export default function LearnHome() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold">Learn Scopa</h1>
-          <p className="text-xs text-green-500">{completedCount} / {totalCount} nodes complete</p>
+          <p className="text-xs text-fcc-green">{completedCount} / {totalCount} nodes complete</p>
         </div>
         <button
           onClick={() => navigate('/')}
-          className="text-green-500 hover:text-white text-sm"
+          className="text-fcc-green hover:text-white text-sm"
         >
           Home
         </button>
       </div>
 
       {/* Progress bar */}
-      <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+      <div className="h-1.5 bg-fcc-tertiary-bg rounded-full overflow-hidden">
         <div
-          className="h-full bg-green-500 rounded-full transition-all"
+          className="h-full bg-fcc-green rounded-full transition-all"
           style={{ width: `${totalCount > 0 ? (completedCount / totalCount) * 100 : 0}%` }}
         />
       </div>
@@ -46,13 +46,13 @@ export default function LearnHome() {
         <div className="flex gap-2">
           <button
             onClick={() => navigate('/learn/challenges')}
-            className="flex-1 py-2 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 text-sm"
+            className="flex-1 py-2 bg-fcc-yellow-gold text-fcc-primary-bg font-bold rounded-lg hover:bg-fcc-yellow text-sm"
           >
             Challenges Hub
           </button>
           <button
             onClick={() => navigate('/play/setup')}
-            className="flex-1 py-2 border border-green-600 text-green-400 hover:bg-green-900/40 rounded-lg text-sm"
+            className="flex-1 py-2 border border-fcc-quaternary-bg text-fcc-green hover:bg-fcc-secondary-bg/40 rounded-lg text-sm"
           >
             Practice game
           </button>

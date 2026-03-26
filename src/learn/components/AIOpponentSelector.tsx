@@ -14,7 +14,7 @@ const CONFIGURATIONS = [
 export default function AIOpponentSelector({ maxTier, onSelect }: Props) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="text-sm font-semibold text-green-300 mb-1">Choose AI Opponent</div>
+      <div className="text-sm font-semibold text-fcc-quaternary-fg mb-1">Choose AI Opponent</div>
       {CONFIGURATIONS.map(({ tier, label, knows }) => {
         const unlocked = maxTier >= tier
         return (
@@ -24,19 +24,19 @@ export default function AIOpponentSelector({ maxTier, onSelect }: Props) {
             disabled={!unlocked}
             className={`text-left rounded-lg border p-3 transition-colors ${
               unlocked
-                ? 'bg-gray-800 border-yellow-600 hover:bg-gray-700 cursor-pointer'
-                : 'bg-gray-900 border-gray-700 text-gray-500 cursor-default'
+                ? 'bg-fcc-tertiary-bg border-fcc-yellow hover:bg-fcc-quaternary-bg cursor-pointer'
+                : 'bg-fcc-secondary-bg border-fcc-quaternary-bg text-fcc-muted cursor-default'
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className={`font-semibold text-sm ${unlocked ? 'text-white' : 'text-gray-500'}`}>
+              <span className={`font-semibold text-sm ${unlocked ? 'text-white' : 'text-fcc-muted'}`}>
                 {label}
               </span>
               {!unlocked && (
-                <span className="text-xs text-gray-600">Complete S{tier} to unlock</span>
+                <span className="text-xs text-fcc-muted">Complete S{tier} to unlock</span>
               )}
             </div>
-            <div className={`text-xs mt-0.5 ${unlocked ? 'text-green-400' : 'text-gray-600'}`}>
+            <div className={`text-xs mt-0.5 ${unlocked ? 'text-fcc-green' : 'text-fcc-muted'}`}>
               {knows}
             </div>
           </button>

@@ -55,10 +55,10 @@ export default function ChallengePlayer({ problem, onComplete }: Props) {
   return (
     <div className="flex flex-col gap-4">
       {/* Challenge header */}
-      <div className="bg-gray-800 border border-yellow-700 rounded-lg p-3">
-        <div className="text-xs text-yellow-500 uppercase tracking-wide font-semibold mb-1">Challenge</div>
+      <div className="bg-fcc-tertiary-bg border border-fcc-yellow rounded-lg p-3">
+        <div className="text-xs text-fcc-yellow uppercase tracking-wide font-semibold mb-1">Challenge</div>
         <p className="text-sm text-white font-medium">{resolveCardTokens(problem.title.en)}</p>
-        <p className="text-xs text-green-400 mt-1">{resolveCardTokens(problem.description.en)}</p>
+        <p className="text-xs text-fcc-green mt-1">{resolveCardTokens(problem.description.en)}</p>
       </div>
 
       {/* Help hints */}
@@ -66,14 +66,14 @@ export default function ChallengePlayer({ problem, onComplete }: Props) {
         <div>
           <button
             onClick={() => setShowHelp(h => !h)}
-            className="text-xs text-blue-400 hover:text-blue-200 underline"
+            className="text-xs text-fcc-blue hover:text-fcc-blue underline"
           >
             {showHelp ? 'Hide hints' : 'Show hints'}
           </button>
           {showHelp && (
             <ul className="mt-2 flex flex-col gap-1">
               {problem.helpHints.map((hint, i) => (
-                <li key={i} className="text-xs text-blue-300 bg-blue-900/30 border border-blue-800 rounded px-2 py-1">
+                <li key={i} className="text-xs text-fcc-blue bg-fcc-secondary-bg/30 border border-fcc-quaternary-bg rounded px-2 py-1">
                   {resolveCardTokens(hint.en)}
                 </li>
               ))}
@@ -105,20 +105,20 @@ export default function ChallengePlayer({ problem, onComplete }: Props) {
             <div className="flex items-center gap-3 justify-center">
               <button
                 onClick={handleSubmit}
-                className="px-6 py-2 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400"
+                className="px-6 py-2 bg-fcc-yellow-gold text-fcc-primary-bg font-bold rounded-lg hover:bg-fcc-yellow"
               >
                 {hasCapture ? '⚡ Submit capture' : '→ Submit discard'}
               </button>
               <button
                 onClick={() => { setSelectedCardId(null); setSelectedCapture([]) }}
-                className="px-3 py-2 text-green-400 hover:text-white text-sm"
+                className="px-3 py-2 text-fcc-green hover:text-white text-sm"
               >
                 Cancel
               </button>
             </div>
           )}
           {!selectedCardId && (
-            <p className="text-center text-xs text-green-600 italic">Select a card to play</p>
+            <p className="text-center text-xs text-fcc-muted italic">Select a card to play</p>
           )}
         </>
       ) : (

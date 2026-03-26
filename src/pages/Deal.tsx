@@ -12,7 +12,7 @@ function DeckCutAnimation({ onComplete }: { onComplete: () => void }) {
     width: 52,
     height: 86,
     borderRadius: 6,
-    background: '#1e40af',
+    background: '#1b1b32',
     border: '2px solid #3b82f6',
     boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
   }
@@ -47,7 +47,7 @@ function DealtCard({ faceUp }: { faceUp: boolean }) {
         height: 46,
         borderRadius: 4,
         flexShrink: 0,
-        background: faceUp ? '#f8fafc' : '#1e40af',
+        background: faceUp ? '#f8fafc' : '#1b1b32',
         border: faceUp ? '1.5px solid #cbd5e1' : '1.5px solid #3b82f6',
         boxShadow: '0 2px 6px rgba(0,0,0,0.4)',
       }}
@@ -71,10 +71,10 @@ function DealZone({
   return (
     <div
       className={`flex flex-col gap-1.5 rounded-lg p-2 transition-colors duration-300 ${
-        isCurrentTarget ? 'bg-green-800/60 ring-1 ring-yellow-400' : 'bg-green-900/30'
+        isCurrentTarget ? 'bg-fcc-tertiary-bg/60 ring-1 ring-fcc-yellow' : 'bg-fcc-secondary-bg/30'
       }`}
     >
-      <span className="text-xs text-green-400 font-medium">{label}</span>
+      <span className="text-xs text-fcc-green font-medium">{label}</span>
       <div className="flex gap-1 flex-wrap min-h-[50px] items-center">
         <AnimatePresence>
           {Array.from({ length: count }).map((_, i) => (
@@ -169,13 +169,13 @@ function DealingAnimation({
           isCurrentTarget={nextZone === 'table'}
         />
         <div className="flex flex-col items-center gap-1 ml-auto">
-          <span className="text-xs text-green-600">{t('deck')}</span>
+          <span className="text-xs text-fcc-muted">{t('deck')}</span>
           <div
             style={{
               width: 34,
               height: 54,
               borderRadius: 5,
-              background: '#1e3a6b',
+              background: '#3b3b4f',
               border: '1.5px solid #3b82f6',
               display: 'flex',
               alignItems: 'center',
@@ -183,7 +183,7 @@ function DealingAnimation({
               boxShadow: '0 3px 8px rgba(0,0,0,0.5)',
             }}
           >
-            <span className="text-blue-300 font-bold" style={{ fontSize: 10 }}>
+            <span className="text-fcc-blue font-bold" style={{ fontSize: 10 }}>
               {deckRemaining}
             </span>
           </div>
@@ -231,14 +231,14 @@ export default function Deal() {
     <div className="flex flex-col min-h-dvh max-w-lg mx-auto p-4 gap-5 pb-6">
       {/* Header */}
       <div className="flex flex-col items-center gap-0.5 pt-4">
-        <span className="text-green-400 text-xs uppercase tracking-widest">
+        <span className="text-fcc-green text-xs uppercase tracking-widest">
           {stage === 'cutting' ? t('cutting') : stage === 'dealing' ? t('dealing') : t('ready')}
         </span>
         <p className="text-white text-base">
-          <span className="font-bold text-yellow-400">{dealerName}</span> {t('dealer_deals', { name: '' }).trim()}
+          <span className="font-bold text-fcc-yellow">{dealerName}</span> {t('dealer_deals', { name: '' }).trim()}
         </p>
         {stage === 'cutting' && (
-          <p className="text-green-400 text-sm">{cutDescription}</p>
+          <p className="text-fcc-green text-sm">{cutDescription}</p>
         )}
       </div>
 
@@ -248,7 +248,7 @@ export default function Deal() {
           <DeckCutAnimation onComplete={onCutDone} />
           <button
             onClick={() => setStage('dealing')}
-            className="text-xs text-green-700 hover:text-green-500 underline"
+            className="text-xs text-fcc-muted hover:text-fcc-green underline"
           >
             {t('common:skip_cut')}
           </button>
@@ -276,14 +276,14 @@ export default function Deal() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             onClick={() => navigate('/play/game')}
-            className="px-8 py-3 bg-yellow-500 text-black font-bold text-lg rounded-lg hover:bg-yellow-400 transition-colors"
+            className="px-8 py-3 bg-fcc-yellow-gold text-fcc-primary-bg font-bold text-lg rounded-lg hover:bg-fcc-yellow transition-colors"
           >
             {t('common:start_playing')}
           </motion.button>
         )}
         <button
           onClick={() => navigate('/play/game')}
-          className="text-xs text-green-700 hover:text-green-500 underline"
+          className="text-xs text-fcc-muted hover:text-fcc-green underline"
         >
           {stage === 'ready' ? t('common:go_to_game') : t('common:skip')}
         </button>

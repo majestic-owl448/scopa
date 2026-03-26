@@ -46,15 +46,15 @@ export default function GameOver() {
   return (
     <div className="flex flex-col items-center justify-center min-h-dvh gap-8 p-6">
       <h2 className="text-3xl sm:text-4xl font-bold">{t('game_over')}</h2>
-      <div className="text-xl sm:text-2xl text-yellow-400">
+      <div className="text-xl sm:text-2xl text-fcc-yellow">
         {inversa ? '🏅' : '🏆'} {inversa ? t('winner_inversa', { name: winner?.name }) : t('winner', { name: winner?.name })}
       </div>
 
-      <div className="bg-green-900 rounded-lg p-4 w-full max-w-sm">
-        <h3 className="text-center font-bold mb-3 text-green-300">{t('final_scores')}</h3>
+      <div className="bg-fcc-secondary-bg rounded-lg p-4 w-full max-w-sm">
+        <h3 className="text-center font-bold mb-3 text-fcc-quaternary-fg">{t('final_scores')}</h3>
         <div className="flex flex-col gap-2">
           {players.map((p, i) => (
-            <div key={i} className={`flex justify-between ${i === winnerIndex ? 'text-yellow-400 font-bold' : ''}`}>
+            <div key={i} className={`flex justify-between ${i === winnerIndex ? 'text-fcc-yellow font-bold' : ''}`}>
               <span>{p.name}{i === winnerIndex ? ' 🏆' : ''}</span>
               <span>{t('pts', { n: totalScores[i] })}</span>
             </div>
@@ -64,13 +64,13 @@ export default function GameOver() {
 
       <button
         onClick={handlePlayAgain}
-        className="px-8 py-4 bg-yellow-500 text-black font-bold text-xl rounded-lg hover:bg-yellow-400"
+        className="px-8 py-4 bg-fcc-yellow-gold text-fcc-primary-bg font-bold text-xl rounded-lg hover:bg-fcc-yellow"
       >
         {t('common:play_again')}
       </button>
       <button
         onClick={() => { reset(); navigate('/') }}
-        className="text-green-400 hover:text-white"
+        className="text-fcc-green hover:text-white"
       >
         {t('common:home')}
       </button>

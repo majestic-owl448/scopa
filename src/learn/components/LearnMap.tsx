@@ -27,7 +27,7 @@ function groupNodes(nodes: LearnNode[]) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="text-xs text-green-500 uppercase tracking-wide font-semibold border-b border-green-800 pb-1">
+      <div className="text-xs text-fcc-green uppercase tracking-wide font-semibold border-b border-fcc-quaternary-bg pb-1">
         {title}
       </div>
       {children}
@@ -88,7 +88,7 @@ export default function LearnMap({ nodeStates, nodes, onNodeSelect }: Props) {
         <div className="flex flex-col gap-4">
           {Object.entries(variants).map(([variantKey, variantNodes]) => (
             <div key={variantKey} className="flex flex-col gap-1.5">
-              <div className="text-xs text-gray-500 font-mono">{variantKey}</div>
+              <div className="text-xs text-fcc-muted font-mono">{variantKey}</div>
               <div className="grid grid-cols-1 gap-1.5">
                 {variantNodes.map(node => (
                   <NodeCard

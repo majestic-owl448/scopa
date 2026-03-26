@@ -4,18 +4,18 @@ import { useTranslation, Trans } from 'react-i18next'
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="flex flex-col gap-2">
-      <h2 className="text-base font-bold text-yellow-400 uppercase tracking-wide border-b border-green-800 pb-1">{title}</h2>
+      <h2 className="text-base font-bold text-fcc-yellow uppercase tracking-wide border-b border-fcc-quaternary-bg pb-1">{title}</h2>
       {children}
     </section>
   )
 }
 
 function P({ children }: { children: React.ReactNode }) {
-  return <p className="text-sm text-green-200 leading-relaxed">{children}</p>
+  return <p className="text-sm text-fcc-secondary-fg leading-relaxed">{children}</p>
 }
 
 function Li({ children }: { children: React.ReactNode }) {
-  return <li className="text-sm text-green-200 leading-relaxed">{children}</li>
+  return <li className="text-sm text-fcc-secondary-fg leading-relaxed">{children}</li>
 }
 
 export default function Rules() {
@@ -25,7 +25,7 @@ export default function Rules() {
   return (
     <div className="max-w-lg mx-auto p-4 pb-12 flex flex-col gap-6">
       <div className="flex items-center gap-4 pt-2">
-        <button onClick={() => navigate('/')} className="text-green-300 hover:text-white">{t('common:back')}</button>
+        <button onClick={() => navigate('/')} className="text-fcc-quaternary-fg hover:text-white">{t('common:back')}</button>
         <h1 className="text-2xl font-bold">{t('page_title')}</h1>
       </div>
 
@@ -51,7 +51,7 @@ export default function Rules() {
       </Section>
 
       <Section title={t('scopa_title')}>
-        <P><Trans ns="rules" i18nKey="scopa_body" components={[<strong key="0" className="text-orange-400" />]} /></P>
+        <P><Trans ns="rules" i18nKey="scopa_body" components={[<strong key="0" className="text-fcc-yellow" />]} /></P>
       </Section>
 
       <Section title={t('end_title')}>

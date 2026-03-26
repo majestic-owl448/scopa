@@ -68,7 +68,7 @@ export default function ChallengesHub() {
     return (
       <div className="flex flex-col min-h-dvh max-w-lg mx-auto p-4 gap-4">
         <div className="flex items-center gap-2">
-          <button onClick={() => setActiveProblem(null)} className="text-green-500 hover:text-white text-sm">
+          <button onClick={() => setActiveProblem(null)} className="text-fcc-green hover:text-white text-sm">
             ←
           </button>
           <h1 className="text-lg font-bold">Challenges Hub</h1>
@@ -82,23 +82,23 @@ export default function ChallengesHub() {
     <div className="flex flex-col min-h-dvh max-w-lg mx-auto p-4 gap-4">
       {/* Header */}
       <div className="flex items-center gap-2">
-        <button onClick={() => navigate('/learn')} className="text-green-500 hover:text-white text-sm">
+        <button onClick={() => navigate('/learn')} className="text-fcc-green hover:text-white text-sm">
           ←
         </button>
         <h1 className="text-lg font-bold">Challenges Hub</h1>
       </div>
 
-      <p className="text-sm text-green-400">
+      <p className="text-sm text-fcc-green">
         Cross-branch challenges drawing on everything you've learned.
         Challenges from all completed nodes are available here.
       </p>
 
       {completedNodes.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
+        <div className="text-center py-8 text-fcc-muted">
           <p>Complete some nodes first to unlock challenges.</p>
           <button
             onClick={() => navigate('/learn')}
-            className="mt-4 text-green-400 hover:text-white underline text-sm"
+            className="mt-4 text-fcc-green hover:text-white underline text-sm"
           >
             Go to Learn map
           </button>
@@ -108,7 +108,7 @@ export default function ChallengesHub() {
           {/* Random challenge button */}
           <button
             onClick={handlePickRandom}
-            className="w-full py-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400"
+            className="w-full py-3 bg-fcc-yellow-gold text-fcc-primary-bg font-bold rounded-lg hover:bg-fcc-yellow"
           >
             Random challenge
           </button>
@@ -116,7 +116,7 @@ export default function ChallengesHub() {
           {/* Challenge list */}
           {allChallenges.length > 0 ? (
             <div className="flex flex-col gap-2">
-              <div className="text-xs text-green-500 uppercase tracking-wide font-semibold">
+              <div className="text-xs text-fcc-green uppercase tracking-wide font-semibold">
                 Available challenges ({allChallenges.length})
               </div>
               {allChallenges.map(problem => {
@@ -125,28 +125,28 @@ export default function ChallengesHub() {
                   <button
                     key={problem.id}
                     onClick={() => setActiveProblem(problem)}
-                    className="text-left bg-gray-800 hover:bg-gray-700 border border-green-800 rounded-lg p-3 transition-colors"
+                    className="text-left bg-fcc-tertiary-bg hover:bg-fcc-quaternary-bg border border-fcc-quaternary-bg rounded-lg p-3 transition-colors"
                   >
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-xs font-mono text-green-500 mr-2">{problem.nodeId}</span>
+                        <span className="text-xs font-mono text-fcc-green mr-2">{problem.nodeId}</span>
                         <span className="text-sm font-semibold text-white">{problem.title.en}</span>
                       </div>
                       <span className={`text-xs ${
-                        challengeState === 'solved' ? 'text-green-400' :
-                        challengeState === 'attempted' ? 'text-yellow-500' :
-                        'text-gray-500'
+                        challengeState === 'solved' ? 'text-fcc-green' :
+                        challengeState === 'attempted' ? 'text-fcc-yellow' :
+                        'text-fcc-muted'
                       }`}>
                         {challengeState === 'solved' ? '✓' : challengeState === 'attempted' ? '…' : '●'}
                       </span>
                     </div>
-                    <p className="text-xs text-green-400 mt-0.5 line-clamp-1">{problem.description.en}</p>
+                    <p className="text-xs text-fcc-green mt-0.5 line-clamp-1">{problem.description.en}</p>
                   </button>
                 )
               })}
             </div>
           ) : (
-            <p className="text-sm text-gray-500">No authored challenges available yet. Random generation is active.</p>
+            <p className="text-sm text-fcc-muted">No authored challenges available yet. Random generation is active.</p>
           )}
         </div>
       )}

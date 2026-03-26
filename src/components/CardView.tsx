@@ -118,7 +118,7 @@ function NapoletaneCard({
   const { w, h } = SIZES[size]
   const src = faceDown || !card ? `${BASE}napoletane/back.jpg` : napoletaneSrc(card)
 
-  const outlineColor = selected ? '#facc15' : highlighted ? '#4ade80' : capturable ? '#60a5fa' : undefined
+  const outlineColor = selected ? '#f1be32' : highlighted ? '#acd157' : capturable ? '#99c9ff' : undefined
   const outlineWidth = outlineColor ? 3 : 0
 
   return (
@@ -190,7 +190,7 @@ function FrenchCard({
   const SIZES = useSizes()
   const { w, h } = SIZES[size]
 
-  const outlineColor = selected ? '#facc15' : highlighted ? '#4ade80' : capturable ? '#60a5fa' : undefined
+  const outlineColor = selected ? '#f1be32' : highlighted ? '#acd157' : capturable ? '#99c9ff' : undefined
   const shadow = selected
     ? '0 0 10px 3px rgba(250,204,21,0.7)'
     : highlighted
@@ -203,7 +203,7 @@ function FrenchCard({
     if (faceDown || !card) {
       // Use CSS card back (blue pattern) — no card back sprite available yet
       return {
-        background: '#1e40af',
+        background: '#1b1b32',
         backgroundImage: 'repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0,rgba(255,255,255,.05) 1px,transparent 0,transparent 50%)',
         backgroundSize: '8px 8px',
       }
@@ -261,7 +261,7 @@ function UnoCard({
   const SIZES = useSizes()
   const { w, h } = SIZES[size]
 
-  const outlineColor = selected ? '#facc15' : highlighted ? '#4ade80' : capturable ? '#60a5fa' : undefined
+  const outlineColor = selected ? '#f1be32' : highlighted ? '#acd157' : capturable ? '#99c9ff' : undefined
   const shadow = selected
     ? '0 0 10px 3px rgba(250,204,21,0.7)'
     : highlighted
