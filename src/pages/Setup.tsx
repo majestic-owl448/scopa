@@ -91,7 +91,7 @@ export default function Setup() {
     : t('capture_rule_undici_desc')
 
   return (
-    <div className="max-w-md mx-auto p-6 flex flex-col gap-5 min-h-dvh pb-8">
+    <div className="max-w-md mx-auto p-4 sm:p-6 flex flex-col gap-4 sm:gap-5 min-h-dvh pb-8">
       <div className="flex items-center gap-4">
         <button onClick={() => navigate('/')} className="text-green-300 hover:text-white">{t('common:back')}</button>
         <h2 className="text-2xl font-bold">{t('game_setup')}</h2>

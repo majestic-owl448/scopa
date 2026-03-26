@@ -199,7 +199,7 @@ export default function Game() {
   }
 
   return (
-    <div className="flex flex-col min-h-dvh max-w-lg mx-auto p-2 gap-2 pb-4">
+    <div className="flex flex-col min-h-dvh max-w-lg mx-auto p-1 sm:p-2 gap-1.5 sm:gap-2 pb-4">
       {/* Header: scores */}
       <div className="flex gap-1 bg-green-900/80 rounded-lg p-2">
         {players.map((p, i) => (
