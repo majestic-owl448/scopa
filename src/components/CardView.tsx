@@ -4,8 +4,10 @@ import { useSettingsStore } from '../store/settingsStore.ts'
 
 // ── Napoletane ──────────────────────────────────────────────────────────────
 
+const BASE = import.meta.env.BASE_URL
+
 function napoletaneSrc(card: Card): string {
-  return `/assets/napoletane/${card.suit}-${card.rank}.jpg`
+  return `${BASE}napoletane/${card.suit}-${card.rank}.jpg`
 }
 
 // ── French SVG sprite ────────────────────────────────────────────────────────
@@ -114,7 +116,7 @@ function NapoletaneCard({
 }: CardViewProps) {
   const SIZES = useSizes()
   const { w, h } = SIZES[size]
-  const src = faceDown || !card ? '/assets/napoletane/back.jpg' : napoletaneSrc(card)
+  const src = faceDown || !card ? `${BASE}napoletane/back.jpg` : napoletaneSrc(card)
 
   const outlineColor = selected ? '#facc15' : highlighted ? '#4ade80' : capturable ? '#60a5fa' : undefined
   const outlineWidth = outlineColor ? 3 : 0
@@ -214,7 +216,7 @@ function FrenchCard({
     const scaleX = w / FRENCH_CARD_W
     const scaleY = h / FRENCH_CARD_H
     return {
-      backgroundImage: `url('/assets/french-cards-cc0.svg')`,
+      backgroundImage: `url('${BASE}french-cards-cc0.svg')`,
       backgroundSize: `${FRENCH_SVG_W * scaleX}px ${FRENCH_SVG_H * scaleY}px`,
       backgroundPosition: `-${cardX * scaleX}px -${cardY * scaleY}px`,
       backgroundRepeat: 'no-repeat',
@@ -274,7 +276,7 @@ function UnoCard({
     const scaleX = w / UNO_CARD_W
     const scaleY = h / UNO_CARD_H
     return {
-      backgroundImage: `url('/assets/uno-cards.svg')`,
+      backgroundImage: `url('${BASE}uno-cards.svg')`,
       backgroundSize: `${UNO_SVG_W * scaleX}px ${UNO_SVG_H * scaleY}px`,
       backgroundPosition: `-${(1 + col * UNO_CARD_W) * scaleX}px -${(1 + row * UNO_CARD_H) * scaleY}px`,
       backgroundRepeat: 'no-repeat',
