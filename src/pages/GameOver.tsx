@@ -45,8 +45,8 @@ export default function GameOver() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-dvh gap-8 p-6">
-      <h2 className="text-4xl font-bold">{t('game_over')}</h2>
-      <div className="text-2xl text-yellow-400">
+      <h2 className="text-3xl sm:text-4xl font-bold">{t('game_over')}</h2>
+      <div className="text-xl sm:text-2xl text-yellow-400">
         {inversa ? '🏅' : '🏆'} {inversa ? t('winner_inversa', { name: winner?.name }) : t('winner', { name: winner?.name })}
       </div>
 

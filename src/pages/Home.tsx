@@ -19,8 +19,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-dvh gap-8">
-      <h1 className="text-6xl font-bold tracking-widest">SCOPA</h1>
-      <p className="text-green-300 text-lg italic">{t('the_italian_card_game')}</p>
+      <h1 className="text-4xl sm:text-6xl font-bold tracking-widest">SCOPA</h1>
+      <p className="text-green-300 text-base sm:text-lg italic">{t('the_italian_card_game')}</p>
 
       <div className="flex flex-col items-center gap-3 w-full max-w-xs">
         {hasActiveGame && (
