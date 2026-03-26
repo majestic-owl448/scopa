@@ -429,9 +429,9 @@ export default function Game() {
 
       {/* In-game rules overlay */}
       {showRules && (
-        <div className="fixed inset-0 bg-black/70 flex items-end justify-center z-40 p-4" onClick={() => setShowRules(false)}>
+        <div className="fixed inset-0 bg-black/70 flex items-end justify-center z-40 p-2 sm:p-4" onClick={() => setShowRules(false)}>
           <div
-            className="bg-gray-900 rounded-xl border border-blue-700 w-full max-w-lg max-h-[75vh] overflow-y-auto"
+            className="bg-gray-900 rounded-xl border border-blue-700 w-full max-w-lg max-h-[80vh] sm:max-h-[75vh] overflow-y-auto"
             onClick={e => e.stopPropagation()}
           >
             <div className="px-4 py-3 border-b border-blue-800 flex justify-between items-center sticky top-0 bg-gray-900">

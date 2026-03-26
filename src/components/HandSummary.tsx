@@ -47,8 +47,8 @@ export default function HandSummary({ roundScores, players, config, handNumber, 
   const { t } = useTranslation('game')
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-40 p-4">
-      <div className="bg-gray-900 rounded-xl border border-green-700 max-w-lg w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/70 flex items-end sm:items-center justify-center z-40 p-2 sm:p-4">
+      <div className="bg-gray-900 rounded-xl border border-green-700 max-w-lg w-full max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
         <div className="px-4 py-3 border-b border-green-800 flex justify-between items-center">
           <h2 className="font-bold text-lg">{t('hand_summary_title', { n: handNumber })}</h2>
           <button
