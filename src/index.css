@@ -4,6 +4,7 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -12,4 +13,12 @@ body {
   background: #1a5c2a;
   color: white;
   min-height: 100dvh;
+  overscroll-behavior: none;
+}
+
+/* Touch-friendly active states for interactive elements */
+button:active,
+[role="button"]:active {
+  opacity: 0.75;
+  transition: opacity 0.05s ease;
 }
