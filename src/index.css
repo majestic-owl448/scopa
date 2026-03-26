@@ -23,3 +23,9 @@ button:active,
   opacity: 0.75;
   transition: opacity 0.05s ease;
 }
+
+/* Prevent double-tap zoom on interactive elements (iOS) */
+button,
+[role="button"] {
+  touch-action: manipulation;
+}
