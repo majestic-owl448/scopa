@@ -79,10 +79,10 @@ export default function TrainerBoard({
                 }
                 disabled={disabled}
                 onClick={() => !disabled && onTableCardClick(card)}
-                onMouseEnter={() => {
+                onPointerEnter={() => {
                   if (!disabled && capturableIds.has(card.id)) setHoveredTableCardId(card.id)
                 }}
-                onMouseLeave={() => setHoveredTableCardId(null)}
+                onPointerLeave={() => setHoveredTableCardId(null)}
                 size="md"
               />
             ))

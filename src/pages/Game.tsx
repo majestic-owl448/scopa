@@ -73,8 +73,8 @@ function CapturedPile({ capturedCards, scopeMarkerCards }: { capturedCards: Card
             flexShrink: 0,
             zIndex: hoveredIdx === i ? 10 : 0,
           }}
-          onMouseEnter={() => setHoveredIdx(i)}
-          onMouseLeave={() => setHoveredIdx(null)}
+          onPointerEnter={() => setHoveredIdx(i)}
+          onPointerLeave={() => setHoveredIdx(null)}
         >
           <ScopeCardPeek card={card} />
         </div>
@@ -295,8 +295,8 @@ export default function Game() {
                 capturable={capturableIds.has(card.id) && !hoveredComboCardIds.has(card.id)}
                 highlighted={hoveredComboCardIds.has(card.id)}
                 onClick={() => handleTableCardClick(card)}
-                onMouseEnter={() => capturableIds.has(card.id) ? setHoveredTableCardId(card.id) : undefined}
-                onMouseLeave={() => setHoveredTableCardId(null)}
+                onPointerEnter={() => capturableIds.has(card.id) ? setHoveredTableCardId(card.id) : undefined}
+                onPointerLeave={() => setHoveredTableCardId(null)}
                 size="md"
               />
             ))

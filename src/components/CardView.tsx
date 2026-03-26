@@ -78,8 +78,8 @@ export type CardViewProps = {
   capturable?: boolean
   rotated?: boolean
   onClick?: () => void
-  onMouseEnter?: () => void
-  onMouseLeave?: () => void
+  onPointerEnter?: () => void
+  onPointerLeave?: () => void
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
 }
@@ -97,7 +97,7 @@ export default function CardView(props: CardViewProps) {
 
 function NapoletaneCard({
   card, faceDown = false, selected = false, highlighted = false, capturable = false,
-  rotated = false, onClick, onMouseEnter, onMouseLeave, size = 'md', disabled = false,
+  rotated = false, onClick, onPointerEnter, onPointerLeave, size = 'md', disabled = false,
 }: CardViewProps) {
   const { w, h } = SIZES[size]
   const src = faceDown || !card ? '/assets/napoletane/back.jpg' : napoletaneSrc(card)
@@ -108,8 +108,8 @@ function NapoletaneCard({
   return (
     <div
       onClick={disabled ? undefined : onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
       role={onClick ? 'button' : undefined}
       aria-label={card ? `${card.rank} of ${card.suit}` : 'card back'}
       style={{
@@ -169,7 +169,7 @@ function spriteStyle(
 
 function FrenchCard({
   card, faceDown = false, selected = false, highlighted = false, capturable = false,
-  rotated = false, onClick, onMouseEnter, onMouseLeave, size = 'md', disabled = false,
+  rotated = false, onClick, onPointerEnter, onPointerLeave, size = 'md', disabled = false,
 }: CardViewProps) {
   const { w, h } = SIZES[size]
 
@@ -213,8 +213,8 @@ function FrenchCard({
   return (
     <div
       onClick={disabled ? undefined : onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
       role={onClick ? 'button' : undefined}
       aria-label={card ? `${card.rank} of ${card.suit}` : 'card back'}
       style={{
@@ -239,7 +239,7 @@ function FrenchCard({
 
 function UnoCard({
   card, faceDown = false, selected = false, highlighted = false, capturable = false,
-  rotated = false, onClick, onMouseEnter, onMouseLeave, size = 'md', disabled = false,
+  rotated = false, onClick, onPointerEnter, onPointerLeave, size = 'md', disabled = false,
 }: CardViewProps) {
   const { w, h } = SIZES[size]
 
@@ -272,8 +272,8 @@ function UnoCard({
   return (
     <div
       onClick={disabled ? undefined : onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
       role={onClick ? 'button' : undefined}
       aria-label={card ? `${card.rank} of ${card.suit}` : 'card back'}
       style={{
