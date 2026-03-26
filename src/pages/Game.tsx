@@ -215,32 +215,34 @@ export default function Game() {
           <span className="text-xs">{t('hand_n', { n: handNumber })}</span>
           <button
             onClick={() => setShowScoreboard(true)}
-            className="text-xs text-green-600 hover:text-green-400 underline"
+            className="text-xs text-green-600 hover:text-green-400 underline min-h-[44px] min-w-[44px] flex items-center justify-center"
             title={t('scoreboard')}
           >
             {t('scores')}
           </button>
-          <button
-            onClick={() => {
-              const styles = ['napoletane', 'french', 'uno'] as const
-              const idx = styles.indexOf(deckStyle as 'napoletane' | 'french' | 'uno')
-              setDeckStyle(styles[(idx + 1) % styles.length]!)
-            }}
-            className="text-xs text-green-600 hover:text-green-400 underline"
-            title="Switch deck style"
-          >
-            {deckStyle === 'napoletane' ? 'Na' : deckStyle === 'french' ? 'Fr' : 'Col'}
-          </button>
-          <button
-            onClick={() => setShowRules(true)}
-            className="text-xs text-blue-400 hover:text-blue-200"
-            title={t('rules_reference')}
-          >
-            ? {t('common:rules')}
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => {
+                const styles = ['napoletane', 'french', 'uno'] as const
+                const idx = styles.indexOf(deckStyle as 'napoletane' | 'french' | 'uno')
+                setDeckStyle(styles[(idx + 1) % styles.length]!)
+              }}
+              className="text-xs text-green-600 hover:text-green-400 underline min-h-[44px] min-w-[44px] flex items-center justify-center"
+              title="Switch deck style"
+            >
+              {deckStyle === 'napoletane' ? 'Na' : deckStyle === 'french' ? 'Fr' : 'Col'}
+            </button>
+            <button
+              onClick={() => setShowRules(true)}
+              className="text-xs text-blue-400 hover:text-blue-200 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              title={t('rules_reference')}
+            >
+              ? {t('common:rules')}
+            </button>
+          </div>
           <button
             onClick={handleQuit}
-            className="text-xs text-red-700 hover:text-red-400 mt-1"
+            className="text-xs text-red-700 hover:text-red-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
             title={t('quit')}
           >
             ✕ {t('quit')}
