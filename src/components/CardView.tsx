@@ -12,30 +12,39 @@ function napoletaneSrc(card: Card): string {
 
 // ── French SVG sprite ────────────────────────────────────────────────────────
 // Source: English_pattern_playing_cards_deck_PLUS_CC0.svg
-// SVG dimensions: 5109×2882px
-// Card face size: 359×539px
+// SVG dimensions: 5109.1855×2882.8103px (intrinsic, no viewBox)
+// Card face size: 359×539px (rect width/height in SVG)
 // Row order (top→bottom): Spades, Hearts, Diamonds, Clubs → Italian: Swords, Cups, Coins, Clubs
-// Column: col 0 (x=30)=Ace, cols 1–9 (x=420,810,...,3540)=2–10, col 10=Jack, col 11=Queen, col 12=King
+// Column: col 0 (Ace), cols 1–9=2–10, col 10=Jack, col 11=Queen, col 12=King
 // Note: French 8,9,10 (cols 7,8,9) are NOT in Italian deck; Italian 8,9,10 = Jack,Queen,King
+//
+// Actual rendered card positions (verified via XML parse of SVG transforms):
+//   - layer2 has transform="translate(9.1856127,0)"
+//   - each card rect has local x=0.5 offset
+//   - total X shift vs nominal column = 9.1856127 + 0.5 ≈ 9.69px
+//   - total Y shift vs nominal row   = 0.5px (local rect y offset)
 
-const FRENCH_SVG_W = 5109
-const FRENCH_SVG_H = 2882
+const FRENCH_SVG_W = 5109.1855
+const FRENCH_SVG_H = 2882.8103
 const FRENCH_CARD_W = 359
 const FRENCH_CARD_H = 539
 
 const FRENCH_COL_X: Record<number, number> = {
-  // Italian rank → SVG x of card (col * 390 but col 0 starts at x=30)
-  1: 30, 2: 420, 3: 810, 4: 1200, 5: 1590, 6: 1980, 7: 2370,
-  8: 3930,  // Jack  (Italian Fante)
-  9: 4320,  // Queen (Italian Regina)
-  10: 4710, // King  (Italian Re)
+  // Italian rank → actual rendered SVG x of card left edge
+  // = nominal_col_x + 9.1856127 (global translate) + 0.5 (local rect offset)
+  1:   39.69, 2:  429.69, 3:  819.69, 4: 1209.69, 5: 1599.69,
+  6: 1989.69, 7: 2379.69,
+  8: 3939.69,  // Jack  (Italian Fante)
+  9: 4329.69,  // Queen (Italian Regina)
+  10: 4719.69, // King  (Italian Re)
 }
 
 const FRENCH_ROW_Y: Record<string, number> = {
-  swords: 30,   // Spades
-  cups:   600,  // Hearts
-  coins:  1170, // Diamonds
-  clubs:  1740, // Clubs
+  // actual rendered SVG y of card top edge = nominal_row_y + 0.5
+  swords: 30.5,   // Spades
+  cups:   600.5,  // Hearts
+  coins:  1170.5, // Diamonds
+  clubs:  1740.5, // Clubs
 }
 
 // ── Uno SVG sprite ───────────────────────────────────────────────────────────
