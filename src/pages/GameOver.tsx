@@ -27,7 +27,7 @@ export default function GameOver() {
     const humanWon = winnerIndex === 0
     const humanScope = players[0]?.scopeMarkerCards.length ?? 0
     recordGameResult(humanWon, gameState.handNumber, humanScope, 0)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [gameState, recordGameResult])
 
   if (!gameState) return null
 

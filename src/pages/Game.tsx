@@ -99,7 +99,7 @@ export default function Game() {
   const { deckStyle, setDeckStyle } = useSettingsStore()
 
   useEffect(() => { if (!gameState) navigate('/') }, [gameState, navigate])
-  useEffect(() => { resumeAI() }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { resumeAI() }, [resumeAI])
   useEffect(() => {
     if (gameState?.phase === 'game-over') navigate('/play/game/over')
   }, [gameState?.phase, navigate])
