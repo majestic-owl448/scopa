@@ -26,13 +26,6 @@ export const PRIMIERA_VALUES_VENETO: Record<number, number> = {
   10: 0,
 };
 
-const SUIT_INDEX: Record<string, number> = {
-  coins: 0,
-  cups: 1,
-  swords: 2,
-  clubs: 3,
-};
-
 export function scoreCarte(players: Player[]): number | null {
   const counts = players.map(p => p.captured.length);
   const max = Math.max(...counts);

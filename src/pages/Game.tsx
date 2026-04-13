@@ -96,6 +96,7 @@ export default function Game() {
   const [showRules, setShowRules] = useState(false)
   const { suitSymbols, cardLabel } = useCardLabel()
   const { t } = useTranslation('game')
+  const { deckStyle, setDeckStyle } = useSettingsStore()
 
   useEffect(() => { if (!gameState) navigate('/') }, [gameState, navigate])
   useEffect(() => { resumeAI() }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -189,7 +190,6 @@ export default function Game() {
     return ids
   })()
   const target = config.playerCount === 2 ? 11 : config.playerCount === 3 ? 16 : 21
-  const { deckStyle, setDeckStyle } = useSettingsStore()
 
   function handleQuit() {
     if (confirm(t('quit_confirm'))) {

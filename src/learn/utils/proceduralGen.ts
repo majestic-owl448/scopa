@@ -34,10 +34,6 @@ export function generateChallenge(
     if (!meetsQualityBar(plays)) continue
 
     const best = plays[0]!
-    const captureCards = best.captureIds
-      .map(id => table.find(c => c.id === id))
-      .filter((c): c is NonNullable<typeof c> => c != null)
-
     const problem: TrainerProblem = {
       id: `proc-${nodeId}-${Date.now()}-${attempt}`,
       nodeId,
@@ -58,7 +54,7 @@ export function generateChallenge(
         en: `Best play: ${best.priorityKey}. ${best.reasonKey}`,
         it: `Mossa migliore: ${best.priorityKey}. ${best.reasonKey}`,
       },
-      helpHints: buildHints(plays, nodeId),
+      helpHints: buildHints(plays),
       rankedPlays: plays.slice(0, 4).map(p => ({
         cardId: p.cardId,
         captureIds: p.captureIds,
@@ -162,8 +158,7 @@ function meetsQualityBar(plays: ReturnType<typeof evaluateAllPlays>): boolean {
 }
 
 function buildHints(
-  plays: ReturnType<typeof evaluateAllPlays>,
-  _nodeId: string
+  plays: ReturnType<typeof evaluateAllPlays>
 ): { en: string; it: string }[] {
   const hints: { en: string; it: string }[] = []
   if (plays[0]) {

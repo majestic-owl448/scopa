@@ -11,20 +11,6 @@ type LearnState = {
   practiceAnswered: Record<string, boolean[]>
 }
 
-type LearnActions = {
-  markGuidedStepDone(nodeId: string): void
-  markPracticeCorrect(nodeId: string, questionIndex: number): void
-  markChallengeAttempted(challengeId: string): void
-  markChallengeSolved(challengeId: string): void
-  getNodeState(nodeId: string): NodeState
-  getUnlockedVariants(): ReturnType<typeof import('../../engine')['validateGameConfig']> extends unknown
-    ? Partial<import('../../engine').GameConfig>[]
-    : never
-  getAvailableStrategyTiers(): number
-  isHintUnlocked(): boolean
-  isManualDealingUnlocked(): boolean
-}
-
 // Build the initial nodeStates: F-1 is the only node available at start
 function buildInitialNodeStates(): Record<string, NodeState> {
   const states: Record<string, NodeState> = {}

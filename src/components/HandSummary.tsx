@@ -1,6 +1,4 @@
 import type { RoundScore, Card, GameConfig } from '../engine'
-import { PRIMIERA_VALUES_STANDARD, PRIMIERA_VALUES_VENETO } from '../engine'
-import CardView from './CardView.tsx'
 import { useCardLabel } from '../utils/cardLabel.ts'
 import { useTranslation } from 'react-i18next'
 
@@ -42,7 +40,6 @@ type Props = {
 }
 
 export default function HandSummary({ roundScores, players, config, handNumber, totalScores, onDismiss }: Props) {
-  const primValues = config.primieraValues === 'veneto' ? PRIMIERA_VALUES_VENETO : PRIMIERA_VALUES_STANDARD
   const { rankLabel, cardLabel, suitSymbols } = useCardLabel()
   const { t } = useTranslation('game')
 

@@ -167,29 +167,6 @@ function NapoletaneCard({
   )
 }
 
-// ── Shared sprite helper ─────────────────────────────────────────────────────
-
-function spriteStyle(
-  spriteUrl: string,
-  svgW: number,
-  svgH: number,
-  cellW: number,
-  cellH: number,
-  col: number,
-  row: number,
-  targetW: number,
-  targetH: number,
-) {
-  const scaleX = targetW / cellW
-  const scaleY = targetH / cellH
-  return {
-    backgroundImage: `url('${spriteUrl}')`,
-    backgroundSize: `${svgW * scaleX}px ${svgH * scaleY}px`,
-    backgroundPosition: `-${col * targetW}px -${row * targetH}px`,
-    backgroundRepeat: 'no-repeat' as const,
-  }
-}
-
 // ── French card ───────────────────────────────────────────────────────────────
 
 function FrenchCard({
@@ -320,4 +297,3 @@ function UnoCard({
     />
   )
 }
-

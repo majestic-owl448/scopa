@@ -2,6 +2,15 @@ import { useNavigate } from 'react-router-dom'
 import { useSettingsStore } from '../store/settingsStore.ts'
 import { useTranslation } from 'react-i18next'
 
+function StatRow({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="flex justify-between items-center py-3 border-b border-fcc-quaternary-bg">
+      <span className="text-fcc-quaternary-fg">{label}</span>
+      <span className="font-bold text-white text-lg">{value}</span>
+    </div>
+  )
+}
+
 export default function Stats() {
   const navigate = useNavigate()
   const { stats } = useSettingsStore()
@@ -14,15 +23,6 @@ export default function Stats() {
   const avgScope = stats.gamesPlayed > 0
     ? (stats.scopeScored / stats.gamesPlayed).toFixed(1)
     : '—'
-
-  function StatRow({ label, value }: { label: string; value: string | number }) {
-    return (
-      <div className="flex justify-between items-center py-3 border-b border-fcc-quaternary-bg">
-        <span className="text-fcc-quaternary-fg">{label}</span>
-        <span className="font-bold text-white text-lg">{value}</span>
-      </div>
-    )
-  }
 
   return (
     <div className="max-w-md mx-auto p-6 flex flex-col gap-5 min-h-dvh">
